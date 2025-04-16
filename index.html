@@ -1,121 +1,143 @@
-<header>
-    <h1>Pomodoro Timer First Brainstorm</h1>
-    <h2>Meeting Minutes – Brainstorming Session</h2>
-    <p>Date: January 31, 2025</p>
-  </header>
-  
-  <main>
-    <section>
-      <h3>Attendance</h3>
-      <ul>
-        <li>Gaurav Nair</li>
-        <li>Bob Smith</li>
-        <li>Parwiz Khan</li>
-      </ul>
-    </section>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer First Brainstorm - Meeting Minutes</title>
+    <!-- Optional: Include a favicon if desired -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+  </head>
+  <body>
+    <header>
+      <h1>Pomodoro Timer First Brainstorm</h1>
+      <h2>Meeting Minutes – Brainstorming Session</h2>
+      <p>Date: January 31, 2025</p>
+    </header>
     
-    <section>
-      <h3>Agenda</h3>
-      <ol>
-        <li>Review previous meeting notes</li>
-        <li>Brainstorm new ideas</li>
-        <li>Plan next steps</li>
-      </ol>
-    </section>
-    
-    <section>
-      <h3>Unfinished Business</h3>
-      <p>Discussion on the existing framework improvements.</p>
-    </section>
-    
-    <section>
-      <h3>New Business</h3>
-      <p>Ideas for a new pomodoro timer feature and integration with Slack.</p>
-    </section>
-    
-    <section>
-      <h3>General Comments</h3>
-      <p>Team feedback and other topics not covered elsewhere.</p>
-    </section>
-    
-    <section>
-      <h3>Whiteboard Sketch</h3>
-      <img src="whiteboard.png" alt="Diagram from the meeting" />
-    </section>
-    
-    <section>
-      <h3>Meeting Recordings</h3>
-      <audio controls>
-        <source src="media/meeting-audio.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <video controls width="320">
-        <source src="media/meeting-video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </section>
-    
-    <!-- New section for Fun Fact video and audio -->
-    <section>
+    <main>
+      <!-- Attendance Section -->
+      <section>
+        <h3>Attendance</h3>
+        <ul>
+          <li>Gaurav Nair</li>
+          <li>Bob Smith</li>
+          <li>Parwiz Khan</li>
+        </ul>
+      </section>
+      
+      <!-- Agenda Section -->
+      <section>
+        <h3>Agenda</h3>
+        <ol>
+          <li>Review previous meeting notes</li>
+          <li>Brainstorm new ideas</li>
+          <li>Plan next steps</li>
+        </ol>
+      </section>
+      
+      <!-- Unfinished Business Section -->
+      <section>
+        <h3>Unfinished Business</h3>
+        <p>Discussion on the existing framework improvements.</p>
+      </section>
+      
+      <!-- New Business Section -->
+      <section>
+        <h3>New Business</h3>
+        <p>Ideas for a new pomodoro timer feature and integration with Slack.</p>
+      </section>
+      
+      <!-- General Comments Section -->
+      <section>
+        <h3>General Comments</h3>
+        <p>Team feedback and other topics not covered elsewhere.</p>
+      </section>
+      
+      <!-- Whiteboard Sketch (Image) Section -->
+      <section>
+        <h3>Whiteboard Sketch</h3>
+        <img src="images/whiteboard.png" alt="Diagram from the meeting">
+      </section>
+      
+      <!-- Meeting Recordings Section -->
+      <section>
+        <h3>Meeting Recordings</h3>
+        <!-- Audio recording -->
+        <audio controls>
+          <source src="media/meeting-audio.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <!-- Video recording -->
+        <video controls width="320">
+          <source src="media/meeting-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </section>
+      
+      <!-- Fun Fact Video and Audio Section -->
+      <section>
         <h3>Fun Fact from CSE 110</h3>
         <p>Watch and listen to this fun fact about our project:</p>
-        <!-- Video element referencing the MOV file -->
+        <!-- Video element referencing the MOV file (renamed to remove spaces) -->
         <video controls width="320">
-            <source src="media/CSE 110 funfact.mov" type="video/quicktime">
-            Your browser does not support the video tag.
+          <source src="media/CSE_110_funfact.mov" type="video/quicktime">
+          Your browser does not support the video tag.
         </video>
         <!-- Audio element referencing the extracted audio file -->
         <audio controls>
-            <source src="media/CSE 110 funfact-audio.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
+          <source src="media/CSE_110_funfact-audio.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
         </audio>
-    </section>
+      </section>
+      
+      <!-- Feedback Form Section -->
+      <section>
+        <h3>Feedback Form</h3>
+        <form>
+          <fieldset>
+            <legend>Your Feedback</legend>
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob"><br><br>
+            
+            <label>Choose a topic:</label>
+            <input type="radio" id="topic1" name="topic" value="meeting">
+            <label for="topic1">Meeting Minutes</label>
+            <input type="radio" id="topic2" name="topic" value="feedback">
+            <label for="topic2">Feedback</label><br><br>
+            
+            <label for="subscribe">Subscribe to newsletter:</label>
+            <input type="checkbox" id="subscribe" name="subscribe"><br><br>
+            
+            <label for="feedback">Comments:</label>
+            <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br><br>
+            
+            <label for="role">Select your role:</label>
+            <input list="roles" id="role" name="role">
+            <datalist id="roles">
+              <option value="Developer">
+              <option value="Designer">
+              <option value="Manager">
+            </datalist><br><br>
+            
+            <label for="department">Department:</label>
+            <select id="department" name="department">
+              <option value="sales">Sales</option>
+              <option value="marketing">Marketing</option>
+              <option value="engineering">Engineering</option>
+            </select><br><br>
+            
+            <button type="submit">Submit Feedback</button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
     
-    <!-- Form for practice -->
-    <section>
-      <h3>Feedback Form</h3>
-      <form>
-        <fieldset>
-          <legend>Your Feedback</legend>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" /><br/><br/>
-          
-          <label for="dob">Date of Birth:</label>
-          <input type="date" id="dob" name="dob" /><br/><br/>
-          
-          <label>Choose a topic:</label>
-          <input type="radio" id="topic1" name="topic" value="meeting" />
-          <label for="topic1">Meeting Minutes</label>
-          <input type="radio" id="topic2" name="topic" value="feedback" />
-          <label for="topic2">Feedback</label><br/><br/>
-          
-          <label for="subscribe">Subscribe to newsletter:</label>
-          <input type="checkbox" id="subscribe" name="subscribe" /><br/><br/>
-          
-          <label for="feedback">Comments:</label>
-          <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br/><br/>
-          
-          <label for="role">Select your role:</label>
-          <input list="roles" id="role" name="role" />
-          <datalist id="roles">
-            <option value="Developer">
-            <option value="Designer">
-            <option value="Manager">
-          </datalist><br/><br/>
-          
-          <label for="department">Department:</label>
-          <select id="department" name="department">
-            <option value="sales">Sales</option>
-            <option value="marketing">Marketing</option>
-            <option value="engineering">Engineering</option>
-          </select><br/><br/>
-          
-          <button type="submit">Submit Feedback</button>
-        </fieldset>
-      </form>
-    </section>
-  </main>
-  
-  <footer>
-    <p>Meeting minutes created by Gaurav Nair. Contact: gnair@ucsd.edu</p>
-  </footer>
+    <footer>
+      <p>Meeting minutes created by Gaurav Nair. Contact: <a href="mailto:gnair@ucsd.edu">gnair@ucsd.edu</a></p>
+    </footer>
+  </body>
+</html>
