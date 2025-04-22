@@ -1,6 +1,7 @@
 name: "📋 Task"
 description: "Use this template to create a new lab task."
-labels: ["task"]
+labels:
+  - task
 body:
   - type: markdown
     attributes:
@@ -11,9 +12,27 @@ body:
         2) Why it’s needed
         3) Any context or links
         -->
-  - type: checkboxes
+  - type: input
+    id: task-title
     attributes:
+      label: "Task title"
+      description: "Short title for this issue"
+      placeholder: "e.g., Style meeting minutes header"
+    validations:
+      required: true
+  - type: textarea
+    id: task-details
+    attributes:
+      label: "Task details"
+      description: "More detailed description of work"
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm-instructions
+    attributes:
+      label: "Checklist"
+      description: "Confirm before filing"
       options:
-        - label: "I have read the lab instructions and this task corresponds to one checklist item."
-          value: "read_instructions"
+        - label: "I have read the lab instructions and this task corresponds to one checklist item"
+    validations:
       required: true
