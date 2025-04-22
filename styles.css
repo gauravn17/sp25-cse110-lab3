@@ -1,131 +1,210 @@
-/* -------------------------------------------------------------------------------- */
-/* 1. CSS Comment */
-/*    write down comments to make your css easier to read */
-/* -------------------------------------------------------------------------------- */
-
-/* 2. Color syntaxes */
-h1 { color: #FF8800; }                      /* hex */
-h2 { color: rgb(255,0,128); }               /* rgb */
-h3 { color: rgba(0,128,255,0.6); }          /* rgba */
-h4 { color: orange; }                       /* named color */
-
-/* 3. Wider‐gamut / color‐mix */
-.section { background: color-mix(in srgb, red 20%, blue 80%); }
-
-/* 4. CSS Variables & Fallback */
+/* 1. Root variables & fallbacks */
 :root {
-  --main-bg: hsl(210, 50%, 95%);
-  --accent: #3498db;
+  --font-sans: 'Roboto', sans-serif;
+  --color-primary: hsl(220, 60%, 50%);
+  --color-secondary: #ff6f61;
+  --color-accent: rgba(255, 111, 97, 0.8);
+  --bg-light: hsl(0, 0%, 98%);
+  --bg-dark: color-mix(in srgb, var(--color-primary) 30%, black 70%);
+  --spacing: 1rem;
+  --padding: 0.5rem;
 }
+
+/* 2. Global reset + base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: var(--main-bg, #f0f0f0);
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-light, #f5f5f5);
+  color: #333333;
+  line-height: 1.5; /* unitless */
 }
 
-/* 5. Units: 3 relative, 3 absolute */
-p { font-size: 1.2rem; /* rem */ line-height: 1.5; /* unitless */ }
-small { font-size: 90%; /* % */ }
-aside { margin: 2cm; /* cm */ padding: 10px; /* px */ }
-footer { margin: 1in; /* in */ }
+/* 3. Headings styling */
+h1, h2, h3, h4 {
+  margin-bottom: 1.5rem; /* rem */
+  text-align: center;
+  text-shadow: 1px 1px 2px var(--color-secondary);
+}
+h1 { font-size: 2.5rem; color: var(--color-primary); }
+h2 { font-size: 2rem; color: rgb(34, 49, 63); }
+h3 { font-size: 1.75rem; color: #2a2a2a; }
+h4 { font-size: 1.5rem; color: hsla(220, 60%, 40%, 0.8); }
 
-/* -------------------------------------------------------------------------------- */
-/* Box Model */
-/* -------------------------------------------------------------------------------- */
+/* 4. Paragraphs & links */
+p {
+  margin-bottom: 1rem; /* rem */
+  padding: 0.25rem 0;  /* shorthand */
+}
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+a:hover, a:active {
+  text-decoration: underline;
+  color: var(--color-accent);
+}
 
-/* 6. Long‑hand margin */
+/* 5. Inline & internal CSS examples (to be placed in HTML) */
+/* 
+  <!-- Inline: -->
+  <div style="border: 2px dashed var(--color-accent); padding: 0.5rem;">
+    Inline styled box
+  </div>
+
+  <!-- Internal: -->
+  <style>
+    .minutes h2 { font-style: italic; color: #444; }
+  </style>
+*/
+
+/* 6. Units showcase */
+.unit-demo {
+  font-size: 1em;    /* em */
+  margin: 5vw;       /* vw */
+  border: 1pt solid #ccc; /* pt */
+  padding: 2cm;      /* cm */
+  width: 600px;      /* px */
+  min-width: 300px;  /* px */
+  max-width: 800px;  /* px */
+  height: 40vh;      /* vh */
+}
+
+/* ============================================================
+   Box Model
+   ============================================================ */
 .container {
-  margin-top: 20px;
-  margin-right: 15px;
+  /* Long‑hand margin */
+  margin-top:    20px;  /* px */
+  margin-right:  15px;
   margin-bottom: 20px;
-  margin-left: 15px;
-}
+  margin-left:   15px;
 
-/* 7. Short‑hand margin + auto */
-.wrapper {
-  margin: 0 auto; /* centers via auto */
-}
+  /* Shorthand margin + auto centering */
+  margin: 1rem auto;    /* margin: top/bottom right/left */
 
-/* 8. Long‑hand padding */
-.container p {
-  padding-top: 10px;
-  padding-right: 8px;
+  /* Long‑hand padding */
+  padding-top:    10px;
+  padding-right:  8px;
   padding-bottom: 10px;
-  padding-left: 8px;
+  padding-left:   8px;
+
+  /* Shorthand padding */
+  padding: 0.75rem 1.5rem;
 }
 
-/* 9. Short‑hand padding */
-.wrapper div {
-  padding: 12px 6px; /* top/bottom 12px, left/right 6px */
-}
-
-/* 10. Borders */
-.box {
+.container .box {
+  /* Borders */
   border-style: solid;
-  border-width: 2px;
-  border-color: var(--accent);
-  border-radius: 8px;
+  border-width: 3px;
+  border-color: var(--color-primary);
+  border-radius: 0.5rem;
 }
 
-/* -------------------------------------------------------------------------------- */
-/* Text & Display */
-/* -------------------------------------------------------------------------------- */
-
-a { color: var(--accent); text-decoration: none; } /* color, text-decoration */
-a:hover { text-decoration: underline; }            /* pseudo‑class :hover */
-button:active { transform: scale(0.98); }           /* pseudo‑class :active */
-
-.hidden { display: none; }                          /* display none */
-.block { display: block; }
-.inline { display: inline; }
+/* ============================================================
+   Display
+   ============================================================ */
+.hidden { display: none; }
+.block   { display: block; }
+.inline  { display: inline; }
 .inline-block { display: inline-block; }
 
-/* -------------------------------------------------------------------------------- */
-/* Sizing & Position */
-/* -------------------------------------------------------------------------------- */
-
-.card {
-  width: 80%;      /* relative */
-  max-width: 600px;
-  min-width: 300px;
-  height: 200px;
-  position: relative; /* relative + absolute example */
+/* ============================================================
+   Positioning
+   ============================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-dark);
+  padding: var(--padding);
+  z-index: 10;
 }
-.card img { position: absolute; top: 10px; right: 10px; }
+.card {
+  position: relative;
+}
 
-/* -------------------------------------------------------------------------------- */
-/* Layouts */
-/* -------------------------------------------------------------------------------- */
-
-/* Flexbox (≥3 children, ≥3 properties) */
+/* ============================================================
+   Flexbox Layout
+   ============================================================ */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
-/* CSS Grid (≥3 children, ≥3 properties) */
+/* Target child combinator */
+.navbar > .logo { font-weight: bold; }
+
+/* ============================================================
+   Grid Layout
+   ============================================================ */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 1rem;
   align-items: start;
+  justify-items: center;
 }
 
-/* -------------------------------------------------------------------------------- */
-/* Responsiveness via media query */
-/* -------------------------------------------------------------------------------- */
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
+/* Selector list */
+.gallery-item, .card, .unit-demo {
+  background: var(--color-secondary);
+  padding: var(--padding);
+  color: white;
+}
+
+/* ============================================================
+   Media Queries (Responsiveness)
+   ============================================================ */
+@media (max-width: 768px) {
+  .navbar { flex-direction: column; }
+  .gallery { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Advanced Selectors
+   ============================================================ */
+/* Universal */
+* { transition: all 0.3s ease; }
+
+/* Element */
+section { margin: 2rem 0; }
+
+/* Class & ID */
+.minutes { border: 2px solid var(--color-accent); }
+
+/* Attribute */
+[aria-label] { outline: 2px dotted var(--color-primary); }
+
+/* Descendant comb. */
+nav ul li a { color: var(--color-secondary); }
+
+/* Child comb. */
+header > h1 { text-transform: uppercase; }
+
+/* Adjacent sibling comb. */
+h1 + p { font-style: italic; }
+
+/* General sibling comb. */
+h2 ~ ul { list-style-type: square; }
+
+/* :has() pseudo-class */
+article:has(img) { padding: 1rem; border: 2px dashed var(--color-accent); }
+
+/* Nested CSS (CSS Nesting Module) */
+nav {
+  ul {
+    li {
+      a {
+        font-weight: 600;
+      }
+    }
   }
-}
-
-/* -------------------------------------------------------------------------------- */
-/* 3rd‑party Font from Google Fonts */
-/* -------------------------------------------------------------------------------- */
-/* In your HTML <head>:
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-*/
-body {
-  font-family: 'Roboto', sans-serif;
-}
