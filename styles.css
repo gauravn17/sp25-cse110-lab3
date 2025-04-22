@@ -1,0 +1,131 @@
+/* -------------------------------------------------------------------------------- */
+/* 1. CSS Comment */
+/*    write down comments to make your css easier to read */
+/* -------------------------------------------------------------------------------- */
+
+/* 2. Color syntaxes */
+h1 { color: #FF8800; }                      /* hex */
+h2 { color: rgb(255,0,128); }               /* rgb */
+h3 { color: rgba(0,128,255,0.6); }          /* rgba */
+h4 { color: orange; }                       /* named color */
+
+/* 3. Wider‐gamut / color‐mix */
+.section { background: color-mix(in srgb, red 20%, blue 80%); }
+
+/* 4. CSS Variables & Fallback */
+:root {
+  --main-bg: hsl(210, 50%, 95%);
+  --accent: #3498db;
+}
+body {
+  background-color: var(--main-bg, #f0f0f0);
+}
+
+/* 5. Units: 3 relative, 3 absolute */
+p { font-size: 1.2rem; /* rem */ line-height: 1.5; /* unitless */ }
+small { font-size: 90%; /* % */ }
+aside { margin: 2cm; /* cm */ padding: 10px; /* px */ }
+footer { margin: 1in; /* in */ }
+
+/* -------------------------------------------------------------------------------- */
+/* Box Model */
+/* -------------------------------------------------------------------------------- */
+
+/* 6. Long‑hand margin */
+.container {
+  margin-top: 20px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+/* 7. Short‑hand margin + auto */
+.wrapper {
+  margin: 0 auto; /* centers via auto */
+}
+
+/* 8. Long‑hand padding */
+.container p {
+  padding-top: 10px;
+  padding-right: 8px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+}
+
+/* 9. Short‑hand padding */
+.wrapper div {
+  padding: 12px 6px; /* top/bottom 12px, left/right 6px */
+}
+
+/* 10. Borders */
+.box {
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--accent);
+  border-radius: 8px;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* Text & Display */
+/* -------------------------------------------------------------------------------- */
+
+a { color: var(--accent); text-decoration: none; } /* color, text-decoration */
+a:hover { text-decoration: underline; }            /* pseudo‑class :hover */
+button:active { transform: scale(0.98); }           /* pseudo‑class :active */
+
+.hidden { display: none; }                          /* display none */
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+
+/* -------------------------------------------------------------------------------- */
+/* Sizing & Position */
+/* -------------------------------------------------------------------------------- */
+
+.card {
+  width: 80%;      /* relative */
+  max-width: 600px;
+  min-width: 300px;
+  height: 200px;
+  position: relative; /* relative + absolute example */
+}
+.card img { position: absolute; top: 10px; right: 10px; }
+
+/* -------------------------------------------------------------------------------- */
+/* Layouts */
+/* -------------------------------------------------------------------------------- */
+
+/* Flexbox (≥3 children, ≥3 properties) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* CSS Grid (≥3 children, ≥3 properties) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  align-items: start;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* Responsiveness via media query */
+/* -------------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------------------------------------------------------------- */
+/* 3rd‑party Font from Google Fonts */
+/* -------------------------------------------------------------------------------- */
+/* In your HTML <head>:
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+*/
+body {
+  font-family: 'Roboto', sans-serif;
+}
