@@ -1,4 +1,4 @@
-# 🚀 Group 1 Standup Notes
+#  Group 1 Standup Notes
 
 > _A daily 5‑minute sync to share progress, plans, and blockers._
 
