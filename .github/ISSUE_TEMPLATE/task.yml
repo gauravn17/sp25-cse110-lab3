@@ -13,7 +13,9 @@ body:
         -->
   - type: checkboxes
     attributes:
-      label: I have read the lab instructions and this task corresponds to one checklist item.
-      required: true
+      options:
+        - label: I have read the lab instructions and this task corresponds to one checklist item.
+          value: read_instructions
+        required: true
       
 
