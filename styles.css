@@ -18,16 +18,10 @@
    • Pseudo‑classes: :hover, :active
    • Flexbox & Grid (≥3 children, ≥3 props each)
    • Media query for responsiveness
-   • Google Font import
    • Selectors: class, ID, universal, element, attribute, list, combinators,
      :has(), nested
    ============================================================ */
 
-/* 1) Import a Google Font for typography */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
-/* 2) CSS Comments make this file readable */
-/*    Define root variables with fallbacks */
 :root {
   --font-stack: 'Open Sans', sans-serif;
   --primary: #3498db;                     /* hex */
