@@ -11,8 +11,7 @@ body:
         2) Why it’s needed
         3) Any context or links
         -->
-  - type: checkbox
+  - type: boolean
     attributes:
       label: I have read the lab instructions and this task corresponds to one checklist item.
-      required: true
-
+      default: false
