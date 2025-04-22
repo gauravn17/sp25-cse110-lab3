@@ -1,239 +1,262 @@
-/* styles.css */
-
 /* ============================================================
-   Advanced Meeting Minutes Stylesheet
+   styles.css – Advanced Meeting Minutes Styling
    ============================================================
-   Features every Part 2 bullet with enhanced implementations:
+   Covers every Part 2 requirement:
    • Comments
-   • Color (named, hex, rgb, rgba, hsl, hsla, color(), color-mix())
-   • CSS variables + fallbacks
-   • Backgrounds & gradients
-   • Units: %, em, rem (relative); px, cm, in (absolute)
-   • Box model: long‑hand & shorthand margin/padding, auto margins
-   • Borders: style, width, color, radius
-   • Text: color, text-decoration, text-align, text-shadow
-   • Display modes: none, block, inline-block, inline
-   • Sizing: width, height, max/min
-   • Positioning: relative, sticky
-   • Pseudo‑classes: :hover, :active
-   • Flexbox & Grid (≥3 children, ≥3 props each)
-   • Media query for responsiveness
+   • Colors (named, hex, rgb, rgba, hsl, hsla, color(), color-mix())
+   • CSS variables with fallbacks
+   • Background & gradients
+   • Units: %, em, rem (relative) & px, cm, in (absolute)
+   • Box model (margin/padding long‑hand, shorthand, auto)
+   • Borders (style, width, color, radius)
+   • Text styling (color, text-decoration, text-align, text-shadow)
+   • Display: none, block, inline-block, inline
+   • Sizing (width, height, max/min)
+   • Positioning (relative, sticky)
+   • Pseudo‑classes (:hover, :active)
+   • Flexbox & Grid (3+ children, 3+ props each)
+   • Responsiveness via media query
+   • Google Font import
    • Selectors: class, ID, universal, element, attribute, list, combinators,
-     :has(), nested
+     :has(), and a CSS‑nesting example (commented)
    ============================================================ */
 
+
+/* 1) Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+
+/* 2) Root variables with fallbacks */
 :root {
-  --font-stack: 'Open Sans', sans-serif;
-  --primary: #3498db;                     /* hex */
-  --secondary: rgba(231, 76, 60, 0.8);     /* rgba */
-  --highlight: hsl(48, 100%, 67%);         /* hsl */
-  --background: color-mix(in srgb, var(--primary) 10%, white 90%); /* color-mix */
-  --text-color: rgb(44, 62, 80);           /* rgb */
-  --fallback-bg: var(--nonexistent, #f0f0f0); /* fallback usage */
-  --spacing: 1rem;                         /* rem */
-  --gutter: 2%;                            /* % */
+  --font-base: 'Open Sans', sans-serif;
+  --clr-primary: #3498db;                                    /* hex */
+  --clr-secondary: rgba(231,76,60,0.8);                       /* rgba */
+  --clr-highlight: hsl(48,100%,67%);                          /* hsl */
+  --clr-bg-mix: color-mix(in srgb, var(--clr-primary) 20%, white 80%);
+  --clr-text: rgb(44,62,80);                                  /* rgb */
+  --bg-fallback: var(--nonexistent, #f0f0f0);                /* fallback */
+  --spacer: 1rem;                                            /* rem */
+  --gutter: 2%;                                              /* % */
 }
 
-/* 3) Global reset + base styles */
+
+/* 3) Global reset */
 *,
 *::before,
 *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 body {
-  font-family: var(--font-stack, sans-serif);
-  background-color: var(--background, #fafafa);
-  color: var(--text-color);
-  line-height: 1.6;                        /* unitless */
+  font-family: var(--font-base);
+  background-color: var(--clr-bg-mix, var(--bg-fallback));
+  color: var(--clr-text);
+  line-height: 1.6;  /* unitless */
 }
 
-/* 4) Heading styles (element selector + selector list) */
+
+/* 4) Heading styles (element & selector list) */
 h1, h2, h3 {
-  font-weight: 700;
   text-align: center;
-  text-shadow: 1px 1px 2px var(--secondary);
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px var(--clr-secondary);
 }
-h1 {
-  font-size: 2rem;                        /* rem */
-  color: var(--primary);
-}
-h2 {
-  font-size: 1.75rem;
-  color: orange;                          /* named color */
-}
-h3 {
-  font-size: 1.5rem;
-  color: hsla(351, 76%, 54%, 0.9);         /* hsla */
-}
+h1 { font-size: 2.5rem; color: var(--clr-primary); }
+h2 { font-size: 2rem;   color: orange; }                  /* named */
+h3 { font-size: 1.75rem;color: hsla(351,76%,54%,0.9);}      /* hsla */
 
-/* 5) Paragraph and link styling */
+
+/* 5) Paragraphs and links */
 p {
-  margin-bottom: 1em;                     /* em */
-  padding: 0.5rem 0;                      /* shorthand padding */
+  margin-bottom: 1em;                 /* em */
+  padding: 0.5rem 0;                  /* shorthand padding */
 }
 a {
-  color: var(--secondary);
+  color: var(--clr-secondary);
   text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;             /* pseudo-class */
+  text-decoration: underline;         /* :hover */
 }
 a:active {
-  color: var(--highlight);
+  color: var(--clr-highlight);        /* :active */
 }
 
-/* 6) Inline- and internal-CSS examples (to be placed in HTML):
-   <h2 style="border-bottom: 2px dashed var(--highlight);">Inline style demo</h2>
+
+/* 6) Inline & internal CSS examples (in your HTML):
+   <!-- Inline -->
+   <div style="border: 2px dashed var(--clr-highlight); padding: 0.5rem;">
+     Inline styled box
+   </div>
+   <!-- Internal -->
    <style>
-     .minutes h2 { font-style: italic; color: #555; }
+     .minutes h2 { font-style: italic; color: #444; }
    </style>
 */
 
-/* 7) Units demo elements */
-.logo {
-  display: inline-block;                  /* display inline-block */
-  width: 5cm;                             /* cm */
-  height: 2cm;
-  background: var(--secondary);
-}
-.ruler {
-  width: 3in;                             /* in */
-  height: 0.5in;
-  background: var(--highlight);
-}
-.note {
-  padding: 12px;                          /* px */
-  background: #ecf0f1;
+
+/* 7) Units showcase (relative & absolute) */
+.unit-demo {
+  font-size: 1rem;                    /* rem */
+  margin:   2%;                       /* % */
+  padding:  1em;                      /* em */
+  width:    300px;                    /* px */
+  height:   5cm;                      /* cm */
+  max-width: 80vw;                    /* vw (bonus relative) */
 }
 
-/* 8) Box Model – margin */
-/* long-hand margin */
-.section {
+
+/* ============================================================
+   Box Model – Margins & Padding
+   ============================================================ */
+
+/* Long‑hand margin */
+.margin-longhand {
   margin-top:    20px;
   margin-right:  15px;
   margin-bottom: 20px;
   margin-left:   15px;
 }
-/* shorthand + auto-centering */
-.wrapper {
-  margin: 1rem auto;                      /* rem + auto */
+/* Shorthand + auto centering */
+.margin-shorthand {
+  margin: 1rem auto;                  /* rem + auto */
 }
 
-/* 9) Box Model – padding */
-/* long-hand padding */
-.container p {
+/* Long‑hand padding */
+.padding-longhand {
   padding-top:    0.5rem;
   padding-right:  1rem;
   padding-bottom: 0.5rem;
   padding-left:   1rem;
 }
-/* shorthand padding */
-.container {
-  padding: 10px 20px;                     /* px */
+/* Shorthand padding */
+.padding-shorthand {
+  padding: 10px 20px;                /* px */
 }
 
-/* 10) Borders */
-.box {
-  border-style: dotted;                   /* style */
-  border-width: 3px;                      /* width */
-  border-color: var(--primary);           /* color */
-  border-radius: 8px;                     /* radius */
+
+/* ============================================================
+   Borders
+   ============================================================ */
+.border-demo {
+  border-style: dotted;
+  border-width: 3px;
+  border-color: var(--clr-primary);
+  border-radius: 0.5rem;             /* rem */
 }
 
-/* 11) Display modes */
-.hidden { display: none; }                /* none */
-.block   { display: block; }
-.inline  { display: inline; }
 
-/* 12) Sizing */
-.card {
-  width: 80%;                             /* % */
-  max-width: 700px;
-  min-width: 300px;
-  height: 40vh;                           /* vh for variety */
+/* ============================================================
+   Display Modes
+   ============================================================ */
+.hidden      { display: none; }       /* none */
+.display-block{ display: block; }
+.inline      { display: inline; }
+.inline-block{ display: inline-block; }
+
+
+/* ============================================================
+   Sizing & Position
+   ============================================================ */
+.size-box {
+  width:      80%;                   /* % */
+  max-width:  700px;
+  min-width:  300px;
+  height:     40vh;                  /* vh bonus */
 }
-
-/* 13) Positioning */
-.relative-box {
-  position: relative;                     /* relative */
-  top: 10px;
+.relative-box { 
+  position: relative;               /* relative */
+  top: 10px; 
 }
 .sticky-header {
-  position: sticky;                       /* sticky */
+  position: sticky;                 /* sticky */
   top: 0;
-  background: var(--primary);
-  padding: var(--spacing);
+  background: var(--clr-primary);
+  padding: var(--spacer);
+  z-index: 10;
 }
 
-/* 14) Flexbox layout */
-.navbar {
-  display: flex;                          /* flex */
-  justify-content: space-between;        /* flex prop */
-  align-items: center;                   /* flex prop */
-  gap: var(--gutter);                    /* flex prop */
+
+/* ============================================================
+   Flexbox Layout (≥3 children, ≥3 props)
+   ============================================================ */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gutter);
+  padding: var(--spacer);
+}
+/* children styling */
+.flex-container > * { flex: 1; }
+
+
+/* ============================================================
+   Grid Layout (≥3 children, ≥3 props)
+   ============================================================ */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  align-items: start;
+  justify-items: center;
+  padding: var(--spacer);
 }
 
-/* 15) Grid layout */
-.gallery {
-  display: grid;                          /* grid */
-  grid-template-columns: repeat(3, 1fr);  /* grid prop */
-  grid-gap: 1rem;                        /* grid prop */
-  align-items: start;                    /* grid prop */
-}
 
-/* 16) Media query for responsiveness */
+/* ============================================================
+   Responsiveness via Media Query
+   ============================================================ */
 @media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-  }
-  .gallery {
-    grid-template-columns: 1fr;
-  }
+  .flex-container { flex-direction: column; }
+  .grid-container { grid-template-columns: 1fr; }
 }
 
-/* 17) Advanced selectors */
-/* Universal */
-* {
-  transition: all 0.2s ease-in-out;
-}
+
+/* ============================================================
+   Advanced Selectors
+   ============================================================ */
+/* Universal selector */
+* { transition: all 0.3s ease; }
+
 /* ID selector */
-#main-content {
-  padding: var(--spacing);
-}
-/* Class selector + combinator (child) */
-header > h1 {
-  text-transform: uppercase;
-}
-/* Descendant combinator */
-nav ul li a {
-  font-size: 0.9rem;
-}
+#main-content { padding: var(--spacer); }
+
+/* Class + combinator (child) */
+header > h1 { text-transform: uppercase; }
+
+/* Descendant */
+nav ul li a { font-size: 0.9rem; }
+
 /* Adjacent sibling */
-h2 + p {
-  font-style: italic;
-}
+h2 + p { font-style: italic; }
+
 /* General sibling */
-h3 ~ ul {
-  list-style-type: square;
-}
+h3 ~ ul { list-style-type: square; }
+
 /* Attribute selector */
 button[type="submit"] {
   cursor: pointer;
+  background: var(--clr-primary);
+  color: white;
 }
-/* :has() selector */
+
+/* :has() pseudo-class */
 article:has(img) {
-  border: 2px solid var(--highlight);
-  padding: 1rem;
+  border: 2px dashed var(--clr-highlight);
+  padding: var(--spacer);
 }
-/* Nested selector (CSS Nesting Module) */
+
+/* CSS Nesting example (commented out; not W3C‑valid yet)
 .card {
   &.highlight {
-    background-color: var(--highlight);
-    border-color: var(--secondary);
+    background-color: var(--clr-highlight);
+    border-color: var(--clr-secondary);
   }
 }
+*/
+
 
 /* ============================================================
    End of styles.css
