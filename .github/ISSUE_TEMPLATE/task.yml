@@ -1,6 +1,6 @@
-name: 📋 Task
-description: Use this template to create a new lab task.
-labels: task
+name: "📋 Task"
+description: "Use this template to create a new lab task."
+labels: ["task"]
 body:
   - type: markdown
     attributes:
@@ -14,8 +14,6 @@ body:
   - type: checkboxes
     attributes:
       options:
-        - label: I have read the lab instructions and this task corresponds to one checklist item.
-          value: read_instructions
-        required: true
-      
-
+        - label: "I have read the lab instructions and this task corresponds to one checklist item."
+          value: "read_instructions"
+      required: true
